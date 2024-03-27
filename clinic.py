@@ -21,7 +21,31 @@ booked_times = []
 
 
 def main():
-    pass
+    running = True
+
+    while running:
+        print(
+            "a)Schedule an Appointment\n"
+            "b)Cancel an Appointment\n"
+            "c)View Appointments\n"
+            "d)Exit"
+        )
+        menu_choice = get_non_empty_string(">>>")
+
+        if menu_choice == "a":
+            pass
+
+        elif menu_choice == "b":
+            pass
+
+        elif menu_choice == "c":
+            pass
+
+        elif menu_choice == "d":
+            running = False
+
+        else:
+            pass
 
 
 if __name__ == "__main__":
