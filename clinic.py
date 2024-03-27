@@ -17,6 +17,17 @@ booked_times = []
 
 # Clinic Specific Functions
 
+
+def store_patient_data(
+    name: str, contact_number: str, appointment_date: str, appointment_time: str
+):
+    with open("patient_data.txt", "a") as patient_info:
+        print(
+            f"{name},{contact_number},{appointment_date},{appointment_time}",
+            file=patient_info,
+        )
+
+
 # Main Output
 
 
@@ -45,6 +56,7 @@ def main():
             running = False
 
         else:
+            print("Please select a relevant option")
             pass
 
 
