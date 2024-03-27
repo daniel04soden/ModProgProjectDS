@@ -123,6 +123,44 @@ def print_list_index(user_list: list) -> None:
         print(f"Index:{i} Value:{item}")
 
 
+# Ensuring number length is valid
+def validate_number(prompt: str) -> str:
+    """This function takes the length the user wants the string to be and
+        prompts the user to enter their Irish Phone number
+
+    :param: prompt: prompt provided for code reusability
+
+    returns: resulting_variable
+    """
+    phone_length = 10
+    resulting_variable = input(prompt)
+    while not len(resulting_variable) == phone_length:
+        print("Invalid input Please try again")
+        resulting_variable = input(prompt)
+    else:
+        return resulting_variable
+
+
+# Full Name Validation
+
+
+def validate_name(prompt: str) -> str:
+    """This function takes the length the user wants the string to be and
+    a prompt in order to restrict the user input
+
+    :param: prompt: prompt provided for code reusability
+
+    returns: resulting_variable
+    """
+    user_limit = 20
+    resulting_variable = input(prompt)
+    while not 1 <= len(resulting_variable) <= user_limit:
+        print("Invalid input Please try again")
+        resulting_variable = input(prompt)
+    else:
+        return resulting_variable
+
+
 # Testing of functions
 
 
@@ -132,7 +170,6 @@ def main():
     my_num = get_number_range()
     print(my_num)
     get_positive_float("Please enter a number:  ")
-    read_file("namepass.txt")
 
 
 if __name__ == "__main__":
