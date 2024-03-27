@@ -12,6 +12,7 @@ CLOSING_HOUR = 5
 
 # Lists for storing values
 
+booked_names = []
 booked_dates = []
 booked_times = []
 
@@ -31,6 +32,7 @@ def store_patient_data(
 def schedule_appointment() -> None:
     # Name and Number input for the user
     name = validate_name("Enter your Name:  ")
+    booked_names.append(name)
     contact_number = validate_number("Enter your Phone number:  ")
 
     # Date of appointment input for the user
@@ -52,8 +54,23 @@ def schedule_appointment() -> None:
     )
 
 
-def cancel_appointment():
-    pass
+def cancel_appointment() -> None:
+    print(
+        "Before we can cancel your appointment we will need to identify you in our system"
+    )
+    name = validate_name("Enter your Name:  ")
+    date = get_non_empty_string("Enter the date of your booking:  ")
+    with open("patient_data.txt", "r+") as patient_info:
+        for values in patient_info:
+            values = values.split(",")
+            print(values)
+            if values[0] == name and values[2] == date:
+                print(
+                    "Cancelled", file=patient_info
+                )  # To be worked on deleting the lines
+
+            else:
+                print(f"{name} cannot be found at date {date}")
 
 
 def view_appointments():
@@ -79,7 +96,7 @@ def main():
             schedule_appointment()
 
         elif menu_choice == "b":
-            pass
+            cancel_appointment()
 
         elif menu_choice == "c":
             pass
