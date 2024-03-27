@@ -47,6 +47,9 @@ def schedule_appointment() -> None:
     booked_times.append(appointment_time)
 
     store_patient_data(name, contact_number, appointment_date, appointment_time)
+    print(
+        f"Appointment for {name} booked at {appointment_time} on the date {appointment_date}"
+    )
 
 
 def cancel_appointment():
@@ -73,7 +76,7 @@ def main():
         menu_choice = get_non_empty_string(">>>")
 
         if menu_choice == "a":
-            pass
+            schedule_appointment()
 
         elif menu_choice == "b":
             pass
