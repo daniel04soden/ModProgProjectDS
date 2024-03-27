@@ -28,6 +28,18 @@ def store_patient_data(
         )
 
 
+def schedule_appointment():
+    pass
+
+
+def cancel_appointment():
+    pass
+
+
+def view_appointments():
+    pass
+
+
 # Main Output
 
 
