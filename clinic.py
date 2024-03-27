@@ -3,7 +3,7 @@
 
 # Import Statements
 
-from reusable import *
+from reusable import get_non_empty_string, validate_name, validate_number
 
 # Named constants
 
@@ -28,8 +28,25 @@ def store_patient_data(
         )
 
 
-def schedule_appointment():
-    pass
+def schedule_appointment() -> None:
+    # Name and Number input for the user
+    name = validate_name("Enter your Name:  ")
+    contact_number = validate_number("Enter your Phone number:  ")
+
+    # Date of appointment input for the user
+
+    # Input validation such as time validation and date validation to be added
+
+    appointment_date = get_non_empty_string(
+        "Enter the preferred date of your appointment:  "
+    )
+    appointment_time = get_non_empty_string(
+        f"Enter the time you would like your appointment on {appointment_date}"
+    )
+    booked_dates.append(appointment_date)
+    booked_times.append(appointment_time)
+
+    store_patient_data(name, contact_number, appointment_date, appointment_time)
 
 
 def cancel_appointment():
