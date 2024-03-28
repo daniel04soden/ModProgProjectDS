@@ -33,6 +33,7 @@ def schedule_appointment() -> None:
     # Name and Number input for the user
     name = validate_name("Enter your Name:  ")
     booked_names.append(name)
+    print(booked_names)
     contact_number = validate_number("Enter your Phone number:  ")
 
     # Date of appointment input for the user
@@ -43,7 +44,7 @@ def schedule_appointment() -> None:
         "Enter the preferred date of your appointment:  "
     )
     appointment_time = get_non_empty_string(
-        f"Enter the time you would like your appointment on {appointment_date}"
+        f"Enter the time you would like your appointment on {appointment_date}:  "
     )
     booked_dates.append(appointment_date)
     booked_times.append(appointment_time)
@@ -74,7 +75,38 @@ def cancel_appointment() -> None:
 
 
 def view_appointments():
-    pass
+    while True:
+        choice = get_non_empty_string(
+            "Would you like to view appointments by name or by date?(N/d)  "
+        ).lower()
+
+        if choice == "d":
+            date = get_non_empty_string("Enter your date of booking:  ")
+            with open("patient_data.txt") as patient_info:
+                for i, values in patient_info:
+                    values = values.split(",")
+                    if values[2] == date:
+                        date_index = booked_dates.index(date)
+                        print(f"{date} booked for {booked_names[date_index]}")
+                    else:
+                        pass
+
+            break
+
+        elif choice == "n":
+            name = validate_name("Enter your Name:  ")
+            with open("patient_data.txt") as patient_info:
+                for values in patient_info:
+                    values = values.split(",")
+                    if values[0] == name:
+                        name_index = booked_names.index(name)
+                        print(f"{name} is booked in for {booked_dates[name_index]}")
+                    else:
+                        pass
+            break
+
+    else:
+        print("Please choose Name or date as a method of viewing.")
 
 
 # Main Output
@@ -99,7 +131,7 @@ def main():
             cancel_appointment()
 
         elif menu_choice == "c":
-            pass
+            view_appointments()
 
         elif menu_choice == "d":
             running = False
