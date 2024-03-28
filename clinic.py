@@ -33,7 +33,6 @@ def schedule_appointment() -> None:
     # Name and Number input for the user
     name = validate_name("Enter your Name:  ")
     booked_names.append(name)
-    print(booked_names)
     contact_number = validate_number("Enter your Phone number:  ")
 
     # Date of appointment input for the user
@@ -85,7 +84,7 @@ def view_appointments() -> None:
         if choice == "d":
             date = get_non_empty_string("Enter your date of booking:  ")
             with open("patient_data.txt") as patient_info:
-                for i, values in patient_info:
+                for values in patient_info:
                     values = values.split(",")
                     if values[2] == date:
                         date_index = booked_dates.index(date)
