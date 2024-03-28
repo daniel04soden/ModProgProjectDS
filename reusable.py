@@ -161,6 +161,33 @@ def validate_name(prompt: str) -> str:
         return resulting_variable
 
 
+# Deleting lines from a file
+
+
+def delete_line(filename: str, line_number: int):
+    """This function reads the file given by the user and
+    deletes a specified line by rewriting a new file
+    without that line
+
+    :param:
+            filename: string referencing the name of the file
+            line_number: number to focus on the line user is Deleting
+
+    :returns: None
+    """
+    with open(filename, "r+") as file:
+        lines = file.readlines()
+
+    if line_number <= len(lines):
+        del lines[line_number - 1]
+
+        with open(filename, "w") as file:
+            for line in lines:
+                file.write(line)
+    else:
+        print("Not found in file")
+
+
 # Testing of functions
 
 

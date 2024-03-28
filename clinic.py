@@ -3,7 +3,7 @@
 
 # Import Statements
 
-from reusable import get_non_empty_string, validate_name, validate_number
+from reusable import get_non_empty_string, validate_name, validate_number, delete_line
 
 # Named constants
 
@@ -62,19 +62,21 @@ def cancel_appointment() -> None:
     name = validate_name("Enter your Name:  ")
     date = get_non_empty_string("Enter the date of your booking:  ")
     with open("patient_data.txt", "r+") as patient_info:
+        i = 0
         for values in patient_info:
             values = values.split(",")
-            print(values)
+            i += 1
             if values[0] == name and values[2] == date:
+                delete_line("patient_data.txt", i)
                 print(
-                    "Cancelled", file=patient_info
-                )  # To be worked on deleting the lines
+                    f"Sucessfully cancelled appointment for {name}\n on the date {date}"
+                )
 
             else:
                 print(f"{name} cannot be found at date {date}")
 
 
-def view_appointments():
+def view_appointments() -> None:
     while True:
         choice = get_non_empty_string(
             "Would you like to view appointments by name or by date?(N/d)  "
